@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  MainWeatherViewController.swift
 //  WeatherApp
 //
 //  Created by Semih Emre ÜNLÜ on 22.01.2022.
@@ -7,11 +7,12 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class MainWeatherViewController: UIViewController {
 
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var temperatureLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var hourlyWeatherContainerView: UIView!
 
     private let networkService: ClientNetworkServiceProtocol = ClientNetworkService()
     private lazy var locationService: LocationManagerProtocol = {
@@ -24,6 +25,16 @@ class ViewController: UIViewController {
         super.viewDidLoad()
 
         locationService.requestLocation()
+    }
+
+    func addHourlyWeatherView(latitude: Double?,
+                              longitude: Double?) {
+        let vc = HourlyWeatherViewContoller(nibName: HourlyWeatherViewContoller.nibName,
+                                            bundle: nil)
+        vc.configure(networkService: networkService, latitude: latitude, longitude: longitude)
+        vc.view.frame = hourlyWeatherContainerView.bounds
+        hourlyWeatherContainerView.clipsToBounds = true
+        hourlyWeatherContainerView.addSubview(vc.view)
     }
 
     func getCurrentWeather(latitude: Double, longitude: Double, completion: @escaping (CurrentWeatherDTO?) -> Void) {
@@ -52,8 +63,9 @@ class ViewController: UIViewController {
     }
 }
 
-extension ViewController: LocationManagerDelegate {
+extension MainWeatherViewController: LocationManagerDelegate {
     func didUpdateLocations(latitude: Double, longitude: Double) {
+        addHourlyWeatherView(latitude: latitude, longitude: longitude)
         updateLabels(latitude: latitude, longitude: longitude)
     }
 }

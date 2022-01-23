@@ -34,8 +34,3 @@ struct Main: Codable {
         case pressure, humidity
     }
 }
-
-// MARK: - Weather
-struct Weather: Codable {
-    let icon: String
-}

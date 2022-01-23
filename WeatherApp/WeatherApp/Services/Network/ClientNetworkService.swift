@@ -11,11 +11,15 @@ protocol ClientNetworkServiceProtocol {
     func getCurrentWeather(latitude: Double,
                            longitude: Double,
                            completion: @escaping (CurrentWeatherDTO?, NetworkError?) -> Void)
+    func getHourlyWeather(latitude: Double,
+                          longitude: Double,
+                          completion: @escaping (HourlyWeatherDTO?, NetworkError?) -> Void)
 }
 
 class ClientNetworkService: ClientNetworkServiceProtocol {
     private enum Endpoints: String {
         case currentWeather = "weather?lat=%f&lon=%f"
+        case hourlyWeather = "onecall?lat=%f&lon=%f"
 
         func urlString(latitude: Double, longitude: Double) -> String {
             return String(format: self.rawValue, latitude, longitude)
@@ -28,6 +32,13 @@ class ClientNetworkService: ClientNetworkServiceProtocol {
                            longitude: Double,
                            completion: @escaping (CurrentWeatherDTO?, NetworkError?) -> Void) {
         let urlString = Endpoints.currentWeather.urlString(latitude: latitude, longitude: longitude)
+        networkService.get(from: urlString, completion: completion)
+    }
+
+    func getHourlyWeather(latitude: Double,
+                          longitude: Double,
+                          completion: @escaping (HourlyWeatherDTO?, NetworkError?) -> Void) {
+        let urlString = Endpoints.hourlyWeather.urlString(latitude: latitude, longitude: longitude)
         networkService.get(from: urlString, completion: completion)
     }
 }
