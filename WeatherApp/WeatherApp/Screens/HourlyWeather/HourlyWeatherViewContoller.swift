@@ -23,6 +23,15 @@ class HourlyWeatherViewContoller: UIViewController {
         collectionView.register(HourlyWeatherCollectionViewCell.nib,
                                 forCellWithReuseIdentifier: HourlyWeatherCollectionViewCell.reuseIdentifier)
         getHourlyWeather()
+
+        setGradientLayer()
+    }
+
+    func setGradientLayer() {
+        let gradientLayer = CAGradientLayer()
+        gradientLayer.frame = self.view.frame
+        gradientLayer.colors = [UIColor.purple.cgColor, UIColor.orange.cgColor]
+        self.view.layer.insertSublayer(gradientLayer, at: .zero)
     }
 
     func configure(networkService: ClientNetworkServiceProtocol,
@@ -39,7 +48,8 @@ class HourlyWeatherViewContoller: UIViewController {
             return
         }
 
-        networkService.getHourlyWeather(latitude: latitude, longitude: longitude) { response, error in
+        networkService.getHourlyWeather(latitude: latitude, longitude: longitude) { [weak self] response, error in
+            guard let self = self else { return }
             self.hourlyWeather = response
 
             DispatchQueue.main.async {
@@ -47,10 +57,6 @@ class HourlyWeatherViewContoller: UIViewController {
             }
         }
     }
-}
-
-extension HourlyWeatherViewContoller: UICollectionViewDelegate {
-
 }
 
 extension HourlyWeatherViewContoller: UICollectionViewDataSource {
@@ -62,7 +68,9 @@ extension HourlyWeatherViewContoller: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HourlyWeatherCollectionViewCell.reuseIdentifier,
                                                       for: indexPath) as! HourlyWeatherCollectionViewCell
-
+        if let item = hourlyWeather?.hourly[indexPath.item] {
+            cell.configure(with: item)
+        }
         return cell
     }
 }

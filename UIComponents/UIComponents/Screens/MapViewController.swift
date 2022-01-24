@@ -80,7 +80,8 @@ class MapViewController: UIViewController {
 
         let direction = MKDirections(request: directionRequest)
 
-        direction.calculate { response, error in
+        direction.calculate {[weak self] response, error in
+            guard let self = self else { return }
             guard error == nil else {
                 //log error
                 //show error

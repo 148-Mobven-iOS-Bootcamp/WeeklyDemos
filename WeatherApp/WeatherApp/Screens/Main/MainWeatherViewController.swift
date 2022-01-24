@@ -21,6 +21,9 @@ class MainWeatherViewController: UIViewController {
         return locationManager
     }()
 
+    private var isHourlyWeatherAdded = false
+    private var hourlyWeatherViewControler: HourlyWeatherViewContoller!
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -29,12 +32,12 @@ class MainWeatherViewController: UIViewController {
 
     func addHourlyWeatherView(latitude: Double?,
                               longitude: Double?) {
-        let vc = HourlyWeatherViewContoller(nibName: HourlyWeatherViewContoller.nibName,
-                                            bundle: nil)
-        vc.configure(networkService: networkService, latitude: latitude, longitude: longitude)
-        vc.view.frame = hourlyWeatherContainerView.bounds
+        hourlyWeatherViewControler = HourlyWeatherViewContoller(nibName: HourlyWeatherViewContoller.nibName,
+                                                                bundle: nil)
+        hourlyWeatherViewControler.configure(networkService: networkService, latitude: latitude, longitude: longitude)
+        hourlyWeatherViewControler.view.frame = hourlyWeatherContainerView.bounds
         hourlyWeatherContainerView.clipsToBounds = true
-        hourlyWeatherContainerView.addSubview(vc.view)
+        hourlyWeatherContainerView.addSubview(hourlyWeatherViewControler.view)
     }
 
     func getCurrentWeather(latitude: Double, longitude: Double, completion: @escaping (CurrentWeatherDTO?) -> Void) {
@@ -65,7 +68,11 @@ class MainWeatherViewController: UIViewController {
 
 extension MainWeatherViewController: LocationManagerDelegate {
     func didUpdateLocations(latitude: Double, longitude: Double) {
-        addHourlyWeatherView(latitude: latitude, longitude: longitude)
+        if !isHourlyWeatherAdded {
+            addHourlyWeatherView(latitude: latitude, longitude: longitude)
+            isHourlyWeatherAdded.toggle()
+        }
+
         updateLabels(latitude: latitude, longitude: longitude)
     }
 }

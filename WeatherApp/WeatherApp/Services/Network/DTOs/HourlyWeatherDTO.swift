@@ -14,13 +14,13 @@ struct HourlyWeatherDTO: Codable {
 
 // MARK: - Current
 struct Forecast: Codable {
-//    let timeInterval: Int
+    let timeInterval: Int
     let temperature: Double
-//    let weather: [Weather]
+    let weather: [Weather]
 
     enum CodingKeys: String, CodingKey {
-//        case timeInterval = "dt"
+        case timeInterval = "dt"
         case temperature = "temp"
-//        case weather
+        case weather
     }
 }

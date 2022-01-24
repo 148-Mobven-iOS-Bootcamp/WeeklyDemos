@@ -16,6 +16,16 @@ class CompostitionalCollectionViewController: UIViewController {
 
         // Do any additional setup after loading the view.
 
+        for i in 0...10 {
+            for i in 0...10 {
+                for i in 0...10 {
+                    for i in 0...10 {
+                        print(i)
+                    }
+                }
+            }
+        }
+
         collectionView.collectionViewLayout = createCompositionalLayout()
     }
 
@@ -24,6 +34,8 @@ class CompostitionalCollectionViewController: UIViewController {
     // .estimated = bekledigimiz width ya da height degeri verme, eger ihtiyac duyarsa degisebilir
     private func createCompositionalLayout() -> UICollectionViewLayout {
         let layout = UICollectionViewCompositionalLayout {(section, configuration) -> NSCollectionLayoutSection? in
+//            guard let self = self else { return nil }
+
             switch section {
             case 0:
                 return self.createFirstSectionLayout()

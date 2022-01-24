@@ -81,6 +81,9 @@ class ViewController: UIViewController {
     func configurePhoneTextField() {
         let toolbar = createPhoneTextFieldKeyboardToolbar()
         textField.inputAccessoryView = toolbar
+        textField.accessibilityIdentifier = "phone text field"
+        textField.accessibilityValue = "+905554443333"
+        textField.isAccessibilityElement = true
 
 //        let widthConstraint = NSLayoutConstraint(item: textField,
 //                                                 attribute: .width,
