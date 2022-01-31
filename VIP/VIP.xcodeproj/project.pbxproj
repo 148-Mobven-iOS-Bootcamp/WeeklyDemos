@@ -24,6 +24,15 @@
 		2365D6A427A5567400B95FEE /* PodcastListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2365D6A227A5567400B95FEE /* PodcastListViewController.swift */; };
 		2365D6A527A5567400B95FEE /* PodcastListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2365D6A327A5567400B95FEE /* PodcastListViewController.xib */; };
 		2365D6A727A5580700B95FEE /* PodcastListContracts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2365D6A627A5580700B95FEE /* PodcastListContracts.swift */; };
+		239AD15627A6711200BB4E75 /* PodcastDetailBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 239AD15527A6711200BB4E75 /* PodcastDetailBuilder.swift */; };
+		239AD15827A6711C00BB4E75 /* PodcastDetailContracts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 239AD15727A6711C00BB4E75 /* PodcastDetailContracts.swift */; };
+		239AD15B27A6712800BB4E75 /* PodcastDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 239AD15927A6712800BB4E75 /* PodcastDetailViewController.swift */; };
+		239AD15C27A6712800BB4E75 /* PodcastDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 239AD15A27A6712800BB4E75 /* PodcastDetailViewController.xib */; };
+		239AD15E27A6713600BB4E75 /* PodcastDetailInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 239AD15D27A6713600BB4E75 /* PodcastDetailInteractor.swift */; };
+		239AD16027A6714100BB4E75 /* PodcastDetailPresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 239AD15F27A6714100BB4E75 /* PodcastDetailPresentation.swift */; };
+		239AD16427A6715D00BB4E75 /* PodcastDetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 239AD16327A6715D00BB4E75 /* PodcastDetailPresenter.swift */; };
+		239AD16627A6716500BB4E75 /* PodcastDetailRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 239AD16527A6716500BB4E75 /* PodcastDetailRouter.swift */; };
+		239AD16927A6769300BB4E75 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 239AD16827A6769300BB4E75 /* Kingfisher */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +55,14 @@
 		2365D6A227A5567400B95FEE /* PodcastListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PodcastListViewController.swift; sourceTree = "<group>"; };
 		2365D6A327A5567400B95FEE /* PodcastListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PodcastListViewController.xib; sourceTree = "<group>"; };
 		2365D6A627A5580700B95FEE /* PodcastListContracts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PodcastListContracts.swift; sourceTree = "<group>"; };
+		239AD15527A6711200BB4E75 /* PodcastDetailBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PodcastDetailBuilder.swift; sourceTree = "<group>"; };
+		239AD15727A6711C00BB4E75 /* PodcastDetailContracts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PodcastDetailContracts.swift; sourceTree = "<group>"; };
+		239AD15927A6712800BB4E75 /* PodcastDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PodcastDetailViewController.swift; sourceTree = "<group>"; };
+		239AD15A27A6712800BB4E75 /* PodcastDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PodcastDetailViewController.xib; sourceTree = "<group>"; };
+		239AD15D27A6713600BB4E75 /* PodcastDetailInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PodcastDetailInteractor.swift; sourceTree = "<group>"; };
+		239AD15F27A6714100BB4E75 /* PodcastDetailPresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PodcastDetailPresentation.swift; sourceTree = "<group>"; };
+		239AD16327A6715D00BB4E75 /* PodcastDetailPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PodcastDetailPresenter.swift; sourceTree = "<group>"; };
+		239AD16527A6716500BB4E75 /* PodcastDetailRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PodcastDetailRouter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +70,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				239AD16927A6769300BB4E75 /* Kingfisher in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -112,12 +130,13 @@
 		2365D68627A5521400B95FEE /* Screens */ = {
 			isa = PBXGroup;
 			children = (
-				2365D68727A5521C00B95FEE /* List */,
+				2365D68727A5521C00B95FEE /* PodcastList */,
+				239AD15427A670E700BB4E75 /* PodcastDetail */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
 		};
-		2365D68727A5521C00B95FEE /* List */ = {
+		2365D68727A5521C00B95FEE /* PodcastList */ = {
 			isa = PBXGroup;
 			children = (
 				2365D68E27A5529E00B95FEE /* PodcastListBuilder.swift */,
@@ -129,7 +148,22 @@
 				2365D69E27A5563800B95FEE /* PodcastListPresenter.swift */,
 				2365D6A027A5564A00B95FEE /* PodcastListRouter.swift */,
 			);
-			path = List;
+			path = PodcastList;
+			sourceTree = "<group>";
+		};
+		239AD15427A670E700BB4E75 /* PodcastDetail */ = {
+			isa = PBXGroup;
+			children = (
+				239AD15527A6711200BB4E75 /* PodcastDetailBuilder.swift */,
+				239AD15727A6711C00BB4E75 /* PodcastDetailContracts.swift */,
+				239AD15927A6712800BB4E75 /* PodcastDetailViewController.swift */,
+				239AD15A27A6712800BB4E75 /* PodcastDetailViewController.xib */,
+				239AD15D27A6713600BB4E75 /* PodcastDetailInteractor.swift */,
+				239AD15F27A6714100BB4E75 /* PodcastDetailPresentation.swift */,
+				239AD16327A6715D00BB4E75 /* PodcastDetailPresenter.swift */,
+				239AD16527A6716500BB4E75 /* PodcastDetailRouter.swift */,
+			);
+			path = PodcastDetail;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -148,6 +182,9 @@
 			dependencies = (
 			);
 			name = VIP;
+			packageProductDependencies = (
+				239AD16827A6769300BB4E75 /* Kingfisher */,
+			);
 			productName = VIP;
 			productReference = 2365D66727A550BC00B95FEE /* VIP.app */;
 			productType = "com.apple.product-type.application";
@@ -176,6 +213,9 @@
 				Base,
 			);
 			mainGroup = 2365D65E27A550BC00B95FEE;
+			packageReferences = (
+				239AD16727A6769300BB4E75 /* XCRemoteSwiftPackageReference "Kingfisher" */,
+			);
 			productRefGroup = 2365D66827A550BC00B95FEE /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -190,6 +230,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				239AD15C27A6712800BB4E75 /* PodcastDetailViewController.xib in Resources */,
 				2365D6A527A5567400B95FEE /* PodcastListViewController.xib in Resources */,
 				2365D67727A550BF00B95FEE /* LaunchScreen.storyboard in Resources */,
 				2365D67427A550BF00B95FEE /* Assets.xcassets in Resources */,
@@ -203,19 +244,26 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				239AD15627A6711200BB4E75 /* PodcastDetailBuilder.swift in Sources */,
 				2365D68927A5523400B95FEE /* PodcastListPresentation.swift in Sources */,
+				239AD16027A6714100BB4E75 /* PodcastDetailPresentation.swift in Sources */,
 				2365D6A127A5564A00B95FEE /* PodcastListRouter.swift in Sources */,
+				239AD16427A6715D00BB4E75 /* PodcastDetailPresenter.swift in Sources */,
 				2365D69D27A5562800B95FEE /* PodcastListInteractor.swift in Sources */,
 				2365D68F27A5529E00B95FEE /* PodcastListBuilder.swift in Sources */,
 				2365D69F27A5563800B95FEE /* PodcastListPresenter.swift in Sources */,
 				2365D6A727A5580700B95FEE /* PodcastListContracts.swift in Sources */,
 				2365D6A427A5567400B95FEE /* PodcastListViewController.swift in Sources */,
 				2365D68427A551CE00B95FEE /* NetworkService.swift in Sources */,
+				239AD15B27A6712800BB4E75 /* PodcastDetailViewController.swift in Sources */,
+				239AD15827A6711C00BB4E75 /* PodcastDetailContracts.swift in Sources */,
 				2365D68527A551CE00B95FEE /* PodcastsDTO.swift in Sources */,
 				2365D66B27A550BC00B95FEE /* AppDelegate.swift in Sources */,
 				2365D68D27A5525D00B95FEE /* AppRouter.swift in Sources */,
 				2365D66D27A550BC00B95FEE /* SceneDelegate.swift in Sources */,
+				239AD16627A6716500BB4E75 /* PodcastDetailRouter.swift in Sources */,
 				2365D68327A551CE00B95FEE /* ClientNetworkService.swift in Sources */,
+				239AD15E27A6713600BB4E75 /* PodcastDetailInteractor.swift in Sources */,
 				2365D68C27A5525D00B95FEE /* AppContainer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -426,6 +474,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		239AD16727A6769300BB4E75 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		239AD16827A6769300BB4E75 /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 239AD16727A6769300BB4E75 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 2365D65F27A550BC00B95FEE /* Project object */;
 }
